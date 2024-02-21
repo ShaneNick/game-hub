@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game App</title>
+</head>
+<body>
+  <header>
+    <h1>Game App</h1>
+    <nav>
+        <a href = "{% url 'register' %}">Register</a>
+        <a href = "{% url 'login' %}">Login</a>
+      <a href="#" data-game="tictactoe">Tic Tac Toe</a>
+      <a href="#" data-game="connect4">Connect 4</a>
+    </nav>
+  </header>
+  <main id="game-container">
+    {% block content %}
+    {% endblock %}
+  </main>
+    </main>
+</body>
+</html>
