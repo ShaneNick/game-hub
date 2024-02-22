@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+
 from .forms import LoginForm, RegisterForm
 
 def home(request):
@@ -20,7 +21,7 @@ def sign_up(request):
         form = RegisterForm()
     return render(request, 'users/register.html', {'form': form})   
     
-def login(request):  
+def user_login(request):  
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
