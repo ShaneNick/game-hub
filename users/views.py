@@ -39,3 +39,10 @@ def user_login(request):
     return render(request, 'users/login.html', {'form': form})
 
     
+# views.py in one of your Django apps
+
+from django.http import HttpResponseForbidden
+
+def custom_csrf_failure_view(request, reason=""):
+    # You can render a custom template here or return any HttpResponse
+    return HttpResponseForbidden("Custom message: CSRF verification failed. {}".format(reason))
