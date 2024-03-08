@@ -31,8 +31,16 @@ SECRET_KEY = 'django-insecure-&7w6c%!sjrnrlc-d!j24atu38kj6@=x!n5q=f)xp6a9z!!+qa^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_FAILURE_VIEW = 'users.views.custom_csrf_failure_view'
+
 ALLOWED_HOSTS = []
 
+ASGI_APPLICATION = 'game_hub.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND' : 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 # Application definition
 
@@ -43,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'tic_tac_toe',
     'users',
 ]

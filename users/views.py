@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
+
 from .forms import LoginForm, RegisterForm
 
 def home(request):
@@ -20,7 +21,7 @@ def sign_up(request):
         form = RegisterForm()
     return render(request, 'users/register.html', {'form': form})   
     
-def login(request):  
+def user_login(request):  
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -38,3 +39,10 @@ def login(request):
     return render(request, 'users/login.html', {'form': form})
 
     
+# views.py in one of your Django apps
+
+from django.http import HttpResponseForbidden
+
+def custom_csrf_failure_view(request, reason=""):
+    # You can render a custom template here or return any HttpResponse
+    return HttpResponseForbidden("Custom message: CSRF verification failed. {}".format(reason))
